@@ -15,8 +15,10 @@
            return choice
        }
 
-       function playRound(playerSelection, computerSelection) {
+       function playRound() {
+            playerSelection = prompt("Please enter your choice (rock, paper or scissors): ")
             playerSelection = playerSelection.toLowerCase();
+            computerSelection = computerPlay();
             let result;
 
             if (playerSelection !== 'rock' & playerSelection !== 'paper' & playerSelection !== 'scissors'){
@@ -53,7 +55,6 @@
            let finalResult;
     
            for (let i = 0; i < 5; i++) {
-               let roundResult;
                let outcome = playRound();
 
                if (roundResult = outcome.includes('won')) {
@@ -62,6 +63,7 @@
 
                } else if (roundResult = outcome.includes('lost')) {
                    computerScore += 1;
+                   console.log('You won this round!');
 
                } else {
                    console.log('This round ended in a draw!');
