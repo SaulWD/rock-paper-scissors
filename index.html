@@ -11,34 +11,43 @@
         const choices = ['rock', 'paper', 'scissors'];
 
        function computerPlay() {
-           return choices[Math.floor(Math.random()*choices.length)];
+           let choice = choices[Math.floor(Math.random()*choices.length)];
+           return choice
        }
 
        function playRound(playerSelection, computerSelection) {
             playerSelection = playerSelection.toLowerCase();
+            let result
 
             if (playerSelection !== 'rock' & playerSelection !== 'paper' & playerSelection !== 'scissors'){
-                console.log('There is no such choice. Please choose rock, paper or scissors.')
+                return result = 'There is no such choice. Please choose either rock, paper or scissors.';
+
             } else if (playerSelection === computerSelection) {
-                console.log('It is a draw!');
+                return result = 'It is a draw!';
+
             } else if (playerSelection === 'rock' & computerSelection === 'paper') {
-                console.log('You lost! Paper beats rock.');
+                return result = 'You lost! Paper beats rock.';
+
             } else if (playerSelection === 'rock' & computerSelection === 'scissors') { 
-                console.log('You won! Rock beats scissors.');
+                return result = 'You won! Rock beats scissors.';
+
             } else if (playerSelection === 'paper' & computerSelection === 'scissors') {
-                console.log('You lost! Scissors beat paper.');
+                return result = 'You lost! Scissors beat paper.';
+        
             } else if (playerSelection === 'paper' & computerSelection === 'rock') {
-                console.log('You won! Paper beats rock.');
+                return result = 'You won! Paper beats rock.';
+
             } else if (playerSelection === 'scissors' & computerSelection === 'paper') {
-                console.log('You won! Scissors beat paper.');
+                return result = 'You won! Scissors beat paper.';
+
             } else if (playerSelection === 'scissors' & computerSelection === 'rock') {
-                console.log('You lost! Rock beats scissors.');
+                return result = 'You lost! Rock beats scissors.';
             }
        }
 
-       const playerSelection = "rock";
+       const playerSelection = "paper";
        const computerSelection = computerPlay();
-
+       console.log(playRound(playerSelection, computerSelection));
     </script>
 </body>
 </html>
