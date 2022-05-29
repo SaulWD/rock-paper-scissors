@@ -60,20 +60,18 @@
                if (roundResult = outcome.includes('won')) {
                    playerScore += 1;
                    console.log('You won this round!');
-
                } else if (roundResult = outcome.includes('lost')) {
                    computerScore += 1;
                    console.log('You won this round!');
-
                } else {
                    console.log('This round ended in a draw!');
                }
            }
 
            if (playerScore > computerScore) {
-               finalResult = 'Congratulations! You won!';
+               finalResult = `Congratulations! You won ${playerScore} to ${computerScore}!`;
            } else {
-               finalResult = 'You lost.';
+               finalResult = `You lost ${playerScore} to ${computerScore}`;
            }
 
            return finalResult;
