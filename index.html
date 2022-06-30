@@ -7,16 +7,39 @@
     <title>Document</title>
 </head>
 <body>
+    <button id="rockbtn">Rock</button>
+    <button id="paperbtn">Paper</button>
+    <button id="scissorsbtn">Scissors</button>
+
+
     <script>
 
+        const rockbtn = document.querySelector('#rockbtn');
+        const paperbtn = document.querySelector('#paperbtn');
+        const scissorsbtn = document.querySelector('#scissorsbtn');
+
+
+        rockbtn.addEventListener('click', () => {
+            playRound('rock');
+        });
+        paperbtn.addEventListener('click', () => {
+            playRound('paper');
+        });
+        scissorsbtn.addEventListener('click', () => {
+            playRound('scissors');
+        });
+
+
+        // Randomly selects computer's choice out of rock, paper or scissors
        function computerPlay() {
            const choices = ['rock', 'paper', 'scissors'];
            let choice = choices[Math.floor(Math.random()*choices.length)];
            return choice
        }
 
-       function playRound() {
-            playerSelection = prompt("Please enter your choice (rock, paper or scissors): ")
+
+       // Plays round of rock, paper, scissors between computer and player
+       function playRound(playerSelection) {
             playerSelection = playerSelection.toLowerCase();
             computerSelection = computerPlay();
             let result;
@@ -46,10 +69,10 @@
                 result = 'You lost! Rock beats scissors.';
             }
 
-            return result
+            return console.log(result)
        }
 
-       function game() {
+      /* function game() {
            let playerScore = 0;
            let computerScore = 0;
            let finalResult;
@@ -77,6 +100,7 @@
            return finalResult;
        }
 
+       */
     </script>
 </body>
 </html>
