@@ -7,39 +7,86 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="rockbtn">Rock</button>
-    <button id="paperbtn">Paper</button>
-    <button id="scissorsbtn">Scissors</button>
+    <div id="result-container">
+        <div id="player-score"></div>
+        <div id="computer-score"></div>
+        <div id="round-result">Make your selection to play a round.</div>
+    </div>
+    <button id="rock-btn">Rock</button>
+    <button id="paper-btn">Paper</button>
+    <button id="scissors-btn">Scissors</button>
+
 
 
     <script>
+        // INITIAL SCORE
+        let playerScore = 0;
+        let computerScore = 0;
 
-        const rockbtn = document.querySelector('#rockbtn');
-        const paperbtn = document.querySelector('#paperbtn');
-        const scissorsbtn = document.querySelector('#scissorsbtn');
+        document.querySelector('#player-score').textContent = `You: ${playerScore}`;
+        document.querySelector('#computer-score').textContent = `Computer: ${computerScore}`;
+
+        // BUTTONS
+        const rockButton = document.querySelector('#rock-btn');
+        const paperButton = document.querySelector('#paper-btn');
+        const scissorsButton = document.querySelector('#scissors-btn');
 
 
-        rockbtn.addEventListener('click', () => {
-            playRound('rock');
+        rockButton.addEventListener('click', () => {
+            let result = playRound('rock');
+            displayRoundResult(result);
+            determineScore(result);
+            updateScoreboard(playerScore, computerScore);
         });
-        paperbtn.addEventListener('click', () => {
-            playRound('paper');
+        paperButton.addEventListener('click', () => {
+            let result = playRound('paper');
+            displayRoundResult(result);
+            determineScore(result);
+            updateScoreboard(playerScore, computerScore);
         });
-        scissorsbtn.addEventListener('click', () => {
-            playRound('scissors');
+        scissorsButton.addEventListener('click', () => {
+            let result = playRound('scissors');
+            displayRoundResult(result);
+            determineScore(result);
+            updateScoreboard(playerScore, computerScore);
         });
 
 
-        // Randomly selects computer's choice out of rock, paper or scissors
-       function computerPlay() {
+        // DISPLAYS RESULTS
+        const resultContainer = document.querySelector('#result-container');
+        let roundResult = document.querySelector('#round-result');
+
+        function displayRoundResult(result) {
+            roundResult.textContent = `${result}`;
+            resultContainer.appendChild(roundResult);
+        }
+
+        // DETERMINE SCORE
+        function determineScore(result) {
+            if (result.includes('won')) {
+                playerScore += 1;
+                console.log(playerScore);
+            } else if (result.includes('lost')) {
+                computerScore +=1;
+            }
+        }
+
+        // UPDATE SCOREBOARD
+        function updateScoreboard(playerScore, computerScore) {
+            document.querySelector('#player-score').textContent = `You: ${playerScore}`;
+            document.querySelector('#computer-score').textContent = `Computer: ${computerScore}`;
+        }
+
+        // MAKES COMPUTER SELECTION
+        function computerPlay() {
            const choices = ['rock', 'paper', 'scissors'];
            let choice = choices[Math.floor(Math.random()*choices.length)];
            return choice
        }
 
 
-       // Plays round of rock, paper, scissors between computer and player
-       function playRound(playerSelection) {
+       // PLAYS ONE ROUND
+        function playRound(playerSelection) {
             playerSelection = playerSelection.toLowerCase();
             computerSelection = computerPlay();
             let result;
@@ -69,7 +116,7 @@
                 result = 'You lost! Rock beats scissors.';
             }
 
-            return console.log(result)
+            return result
        }
 
       /* function game() {
