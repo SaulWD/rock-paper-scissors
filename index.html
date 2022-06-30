@@ -37,18 +37,21 @@
             displayRoundResult(result);
             determineScore(result);
             updateScoreboard(playerScore, computerScore);
+            showOutcome();
         });
         paperButton.addEventListener('click', () => {
             let result = playRound('paper');
             displayRoundResult(result);
             determineScore(result);
             updateScoreboard(playerScore, computerScore);
+            showOutcome();
         });
         scissorsButton.addEventListener('click', () => {
             let result = playRound('scissors');
             displayRoundResult(result);
             determineScore(result);
             updateScoreboard(playerScore, computerScore);
+            showOutcome();
         });
 
 
@@ -65,7 +68,6 @@
         function determineScore(result) {
             if (result.includes('won')) {
                 playerScore += 1;
-                console.log(playerScore);
             } else if (result.includes('lost')) {
                 computerScore +=1;
             }
@@ -77,6 +79,25 @@
             document.querySelector('#computer-score').textContent = `Computer: ${computerScore}`;
         }
 
+        // GAME OUTCOME AFTER 5 ROUNDS
+        function showOutcome() {
+            if (playerScore == 5) {
+                alert('You won the game!');
+                playerScore = 0;
+                computerScore = 0;
+                updateScoreboard(playerScore, computerScore);
+
+            } else if (computerScore == 5) {
+                alert('You lost the game!');
+                playerScore = 0;
+                computerScore = 0;
+                updateScoreboard(playerScore, computerScore);
+            }
+        }
+
+        function restScore(playerScore, computerScore) {
+
+        }
         // MAKES COMPUTER SELECTION
         function computerPlay() {
            const choices = ['rock', 'paper', 'scissors'];
